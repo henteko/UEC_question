@@ -1,0 +1,48 @@
+< !DOCTYPE html>
+<html>
+    <head>
+        <title>UEC Question</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+        <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <?php
+        $id = session_id();
+        $table = "Users";
+        $where = "Session_id = '".$id."'";
+        $row = select($table,$where);
+        insert($row,"finish_Users");
+        ?>
+    </head>
+    <body>
+        <div data-role="page">
+            <div data-role="header">
+                <h1>UEC Question</h1>
+            </div>
+            <div align="center">
+                <h2><?php echo $row['NAME'];  ?>さんの成績は、<?php echo ($row['Q_num'] - 1); ?>問中:<?php echo ($row['Q_ok']); ?>問正解です!!</h2>
+                <?php if($row['Q_ok'] > 27) {
+                echo "<h3>おめでとうございます!!あなたはきっと4年で卒業出来るでしょう!!</h3>";
+                }else if($row['Q_ok'] > 24) {
+                echo "<h3>おしい!!あなたはきっと卒業まで5年間かかるでしょう</h3>";
+                }else if($row['Q_ok'] > 21) {
+                echo "<h3>おめでとうございます!!あなたは通常の大学生活+2年の延長戦に突入出来るでしょう!!</h3>";
+                }else if($row['Q_ok'] > 18) {
+                echo "<h3>おめでとうございます!!あなたは通常の大学生活+3年の延長戦に突入出来るでしょう!!</h3>";
+                }else {
+                echo "<h3>あなたは学部を8年以上で卒業するでしょう……踏み入れては行けない領域です</h3>";
+                }
+                ?>
+            </div>
+            <form method="POST" action="http://www3264ue.sakura.ne.jp/UEC_question/index.php">
+                <div>
+                    <input type="hidden" name="Twitter" value="ok">
+                </div>
+                <div>
+                    <input type="submit" value="結果をTwitterでつぶやかれる" >
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+

@@ -1,9 +1,73 @@
+< !DOCTYPE html>
 <html>
-<?php
-  session_id($_COOKIE['PHPSESSID']);
-  session_start();
-?>
-<?php if(isset($_SESSION['NAME'])) {echo $_SESSION['NAME'];} ?>
-<?php echo $_SESSION['NAME']; ?>
-1?~A??~A~Y
+    <head>
+        <title>UEC Question</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+        <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script>
+            function ok() {
+                var hoge = document.getElementById('hoge');
+                var myForm = document.createElement('form');
+                myForm.setAttribute("action", "http://www3264ue.sakura.ne.jp/UEC_question/index.php");
+                myForm.setAttribute("method", "post");
+                var inps = new Object;
+                inps[0] = document.createElement('input');
+                inps[0].setAttribute("type", "hidden");
+                inps[0].setAttribute("name", "id");
+                inps[0].setAttribute("value", "1");
+                inps[1] = document.createElement('input');
+                inps[1].setAttribute("type", "hidden");
+                inps[1].setAttribute("name", "comp");
+                inps[1].setAttribute("value", "1");
+                for(var i in inps) {
+                    myForm.appendChild(inps[i]);
+                }
+                hoge.appendChild(myForm);
+                myForm.submit();
+            }
+
+            function no() {
+                var hoge = document.getElementById('hoge');
+                var myForm = document.createElement('form');
+                myForm.setAttribute("action", "http://www3264ue.sakura.ne.jp/UEC_question/index.php");
+                myForm.setAttribute("method", "post");
+                var inps = new Object;
+                inps[0] = document.createElement('input');
+                inps[0].setAttribute("type", "hidden");
+                inps[0].setAttribute("name", "id");
+                inps[0].setAttribute("value", "1");
+                inps[1] = document.createElement('input');
+                inps[1].setAttribute("type", "hidden");
+                inps[1].setAttribute("name", "comp");
+                inps[1].setAttribute("value", "0");
+                for(var i in inps) {
+                    myForm.appendChild(inps[i]);
+                }
+                hoge.appendChild(myForm);
+                myForm.submit();
+            }
+        </script>
+    </head>
+    <body>
+        <div data-role="page" id="question">
+            <div data-role="header">
+                <h1>UEC Question</h1>
+            </div>
+            <div data-role="content">
+                <h3>問題:1</h3>
+                <div align="center">
+                    <h1>じゃあいつやるか?</h1>
+                </div>
+                <div data-role="controlgroup">
+                    <a href="#" data-role="button" onclick="no();">明日</a>
+                    <a href="#" data-role="button" onclick="no();">来週</a>
+                    <a href="#" data-role="button" onclick="no();">来月</a>
+                    <a href="#" data-role="button" onclick="ok();">今でしょ(ドヤァ</a>
+                </div>
+                <div id="hoge"></div>
+            </div>
+        </div>
+    </body>
 </html>
