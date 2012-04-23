@@ -4,3 +4,18 @@ Created by Thoshi_hoshi,HK,henteko.
 We are super hacker!!
 http://yukinohana.net/~teres/hp/index.php
 app sample URL:http://www3264ue.sakura.ne.jp/UEC_question/
+
+
+sample Twitter.rb
+require 'rubygems'
+require 'twitter'
+
+
+Twitter.configure do |config|
+    config.consumer_key = "自分の入れてね"
+    config.consumer_secret    = "自分の入れてね"
+    config.oauth_token        = "取得して入れてね"
+    config.oauth_token_secret = "取得して入れてね"
+end
+
+Twitter.update(ARGV[0])
