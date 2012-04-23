@@ -102,7 +102,7 @@ if($row != null) {
             $comment .= "あなたは学部を8年以上で卒業するでしょう……踏み入れては行けない領域です";
         }
 
-        $cmd = `ruby /home/henteko/teresUEC_Twitter/Twitter.rb ${comment}`; 
+        $cmd = `ruby rubyで書いたTwitter投稿スクリプトのPath ${comment}`; 
         echo $cmd;
         delete_by_session_id($row['Session_id']);
         require($Q_DIR."tf.html");
@@ -136,7 +136,7 @@ if($row != null) {
     }else {
         delete_by_session_id($row['Session_id']);
         header("HTTP/1.1 301 Moved Permanently");
-        header("Location: http://www3264ue.sakura.ne.jp/UEC_question/index.php");
+        header("Location: BASE_URL/UEC_question/index.php");
     }
 
 }else {
